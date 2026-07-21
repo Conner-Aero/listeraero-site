@@ -1,0 +1,63 @@
+---
+interface Props {
+  tag: string;
+  title: string;
+  summary: string;
+  href: string;
+  delay?: number;
+}
+const { tag, title, summary, href, delay = 0 } = Astro.props;
+---
+
+<a href={href} class="cap-card reveal" style={delay ? `transition-delay:${delay}ms` : undefined}>
+  <span class="cap-card__tag">{tag}</span>
+  <h3 class="cap-card__title">{title}</h3>
+  <p class="cap-card__summary">{summary}</p>
+  <span class="cap-card__link">View details &rarr;</span>
+</a>
+
+<style>
+  .cap-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.75rem;
+    background: var(--color-base-raised);
+    border: 1px solid var(--color-hairline);
+    border-top: 2px solid var(--color-structure);
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .cap-card:hover {
+    border-top-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .cap-card__tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+
+  .cap-card__title {
+    font-size: 1.3rem;
+  }
+
+  .cap-card__summary {
+    margin: 0;
+    color: var(--color-structure);
+    font-size: 0.94rem;
+    flex-grow: 1;
+  }
+
+  .cap-card__link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+</style>

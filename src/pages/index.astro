@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DimLine from '../components/DimLine.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+import PortfolioCard from '../components/PortfolioCard.astro';
+import HeroDrawing from '../components/HeroDrawing.astro';
+import { capabilities } from '../data/capabilities.js';
+import { portfolio } from '../data/portfolio.js';
+
+const teaser = portfolio.slice(0, 3);
+---
+
+<Layout
+  title="Home"
+  description="Independent aerospace engineering: structural analysis, FAA certification support, and design-through-manufacturing for aircraft OEMs and suppliers."
+>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Lister Aerospace Technologies LLC</p>
+        <h1 class="hero__headline">From analysis to a finished part.</h1>
+        <p class="hero__subhead">
+          Independent aerospace engineering: structural analysis, FAA certification support, and
+          design-through-manufacturing for aircraft OEMs and suppliers.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn-solid">Request a Quote</a>
+          <a href="/portfolio" class="hero__secondary-link">See selected work &rarr;</a>
+        </div>
+      </div>
+      <div class="hero__art">
+        <HeroDrawing />
+      </div>
+    </div>
+  </section>
+
+  <section class="positioning">
+    <div class="wrap">
+      <DimLine label="01 · Scope" />
+      <p class="positioning__text">
+        Most engineering stops at the drawing. Lister Aerospace takes a part further: running the
+        analysis, building the CAD, substantiating the structure, designing the tooling, and
+        machining the finished component. That range comes from serving as the sole engineer of
+        record at a Part 23 certified aircraft OEM, paired with hands-on CNC machining and
+        tooling. One point of contact from first sketch to first part.
+      </p>
+    </div>
+  </section>
+
+  <section class="pillars">
+    <div class="wrap">
+      <DimLine label="02 · Capabilities" />
+      <div class="pillars__grid">
+        {capabilities.map((cap, i) => (
+          <CapabilityCard
+            tag={cap.tag}
+            title={cap.title}
+            summary={cap.summary}
+            href={`/capabilities#${cap.slug}`}
+            delay={i * 80}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="work-teaser">
+    <div class="wrap">
+      <DimLine label="03 · Selected Work" />
+      <div class="work-teaser__grid">
+        {teaser.map((item, i) => (
+          <PortfolioCard
+            title={item.title}
+            tags={item.tags}
+            description={item.description}
+            patternId={`home-teaser-${i}`}
+          />
+        ))}
+      </div>
+      <a href="/portfolio" class="work-teaser__link">View full portfolio &rarr;</a>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-band__row">
+      <h2 class="cta-band__headline">Have a part, a project, or a certification problem?<br />Let's talk.</h2>
+      <a href="/contact" class="btn btn-solid">Request a Quote</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.5rem, 5.6vw, 4.2rem);
+    margin-block: 0.9rem 1.1rem;
+  }
+
+  .hero__subhead {
+    max-width: 46ch;
+    color: var(--color-structure);
+    font-size: 1.1rem;
+  }
+
+  .hero__actions {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__secondary-link {
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-hairline-strong);
+    padding-bottom: 2px;
+  }
+
+  .hero__secondary-link:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .hero__art {
+    color: var(--color-ink);
+  }
+
+  .positioning {
+    padding-top: 0;
+  }
+
+  .positioning__text {
+    max-width: 74ch;
+    font-size: 1.15rem;
+    color: var(--color-structure);
+    margin-top: 1.75rem;
+  }
+
+  .pillars__grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .work-teaser__grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .work-teaser__link {
+    display: inline-block;
+    margin-top: 2rem;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-hairline-strong);
+    padding-bottom: 2px;
+  }
+
+  .work-teaser__link:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .cta-band {
+    background: var(--color-ink);
+    color: var(--color-base);
+  }
+
+  .cta-band__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-band__headline {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--color-base);
+    max-width: 30ch;
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__art {
+      order: -1;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    .pillars__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .work-teaser__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .pillars__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-band__row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} · Lister Aerospace</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f4f1" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      const items = document.querySelectorAll('.reveal');
+      if (
+        'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        // Only now arm the hidden starting state — if this script never
+        // runs, .reveal content stays visible (see global.css).
+        document.documentElement.classList.add('js-reveal');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.2 }
+        );
+        items.forEach((item) => observer.observe(item));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--color-ink);
+    color: var(--color-base);
+    padding: 0.75rem 1.25rem;
+    z-index: 100;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .skip-link:focus {
+    left: 0;
+  }
+</style>

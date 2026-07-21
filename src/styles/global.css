@@ -1,0 +1,163 @@
+/* Fonts — self-hosted, subset to latin */
+@import '@fontsource/big-shoulders/600.css';
+@import '@fontsource/big-shoulders/700.css';
+@import '@fontsource/big-shoulders/800.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+:root {
+  /* Palette — drafting vellum + graphite + machined steel + one anodized-orange accent */
+  --color-base: #f5f4f1;
+  --color-base-raised: #fbfaf8;
+  --color-ink: #16181c;
+  --color-structure: #3c4a57;
+  --color-titanium: #6e7b87;
+  --color-accent: #c8552b;
+  --color-accent-ink: #a8431f;
+  --color-hairline: rgba(60, 74, 87, 0.22);
+  --color-hairline-strong: rgba(22, 24, 28, 0.4);
+
+  /* Type */
+  --font-display: 'Big Shoulders', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --content-width: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 2px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Clears the sticky header when anything scrolls into view: anchor links,
+     focus, and the browser's own scroll-to-invalid-field on form validation. */
+  scroll-margin-top: 5rem;
+}
+
+html {
+  background: var(--color-base);
+  color: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  background: var(--color-base);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-titanium);
+}
+
+.wrap {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Buttons / links */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  color: var(--color-accent);
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  color: var(--color-base-raised);
+}
+
+.btn-solid {
+  background: var(--color-accent);
+  color: var(--color-base-raised);
+}
+
+.btn-solid:hover {
+  background: var(--color-accent-ink);
+  border-color: var(--color-accent-ink);
+}
+
+.btn-ghost {
+  border-color: var(--color-hairline-strong);
+  color: var(--color-ink);
+}
+
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: var(--color-base);
+  border-color: var(--color-ink);
+}
+
+/*
+ * Scroll-reveal — respects prefers-reduced-motion, and progressively enhanced:
+ * content is visible by default. Only once JS confirms it can observe and
+ * reveal elements does it arm the hidden starting state (via .js-reveal on
+ * <html>), so a failed/blocked script never leaves content invisible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .js-reveal .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

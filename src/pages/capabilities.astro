@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DimLine from '../components/DimLine.astro';
+import { capabilities } from '../data/capabilities.js';
+---
+
+<Layout
+  title="Capabilities"
+  description="Design & CAD, analysis & substantiation, FAA certification support, and tooling & manufacturing: one engineer covering the full path to certified, machined hardware."
+>
+  <section class="cap-intro">
+    <div class="wrap">
+      <p class="eyebrow">Capabilities</p>
+      <h1 class="cap-intro__headline">A single engineer covering the full path from concept to certified, machined hardware.</h1>
+    </div>
+  </section>
+
+  {capabilities.map((cap, i) => (
+    <section class="cap-section" id={cap.slug}>
+      <div class="wrap">
+        <DimLine label={`0${i + 1} · ${cap.tag}`} />
+        <div class="cap-section__grid">
+          <div class="cap-section__heading">
+            <span class="cap-section__tag">{cap.tag}</span>
+            <h2 class="cap-section__title">{cap.title}</h2>
+            <p class="cap-section__summary">{cap.summary}</p>
+          </div>
+          <ul class="cap-section__list">
+            {cap.bullets.map((bullet) => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="cta-band">
+    <div class="wrap cta-band__row">
+      <h2 class="cta-band__headline">Have a part, a project, or a certification problem?<br />Let's talk.</h2>
+      <a href="/contact" class="btn btn-solid">Request a Quote</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cap-intro {
+    padding-bottom: 1rem;
+  }
+
+  .cap-intro__headline {
+    font-size: clamp(2rem, 4.4vw, 3rem);
+    max-width: 22ch;
+    margin-top: 0.9rem;
+  }
+
+  .cap-section {
+    border-top: 1px solid var(--color-hairline);
+  }
+
+  .cap-section__grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .cap-section__tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+
+  .cap-section__title {
+    font-size: 1.9rem;
+    margin-block: 0.6rem 0.85rem;
+  }
+
+  .cap-section__summary {
+    color: var(--color-structure);
+    max-width: 34ch;
+    margin: 0;
+  }
+
+  .cap-section__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .cap-section__list li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: var(--color-ink);
+    font-size: 1.02rem;
+  }
+
+  .cap-section__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.7rem;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .cta-band {
+    background: var(--color-ink);
+    color: var(--color-base);
+    margin-top: clamp(3rem, 8vw, 6rem);
+  }
+
+  .cta-band__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-band__headline {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--color-base);
+    max-width: 30ch;
+  }
+
+  @media (max-width: 760px) {
+    .cap-section__grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .cta-band__row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

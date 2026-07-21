@@ -1,0 +1,105 @@
+---
+import DimLine from './DimLine.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <DimLine label="EOF" />
+    <div class="site-footer__grid">
+      <div>
+        <p class="site-footer__company">Lister Aerospace Technologies LLC</p>
+        <p class="site-footer__location">Greenfield, WI</p>
+      </div>
+      <div>
+        <a class="site-footer__email" href="mailto:conner@listeraero.com">conner@listeraero.com</a>
+      </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/capabilities">Capabilities</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/contact">Request a Quote</a>
+      </nav>
+    </div>
+    <p class="site-footer__fine">&copy; {year} Lister Aerospace Technologies LLC.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: 2.5rem 2rem;
+    background: var(--color-ink);
+    color: var(--color-base);
+  }
+
+  .site-footer :global(.dimline) {
+    color: var(--color-titanium);
+    margin-bottom: 2.25rem;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.4fr;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .site-footer__company {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+  }
+
+  .site-footer__location {
+    margin: 0;
+    color: #9aa4ac;
+  }
+
+  .site-footer__email {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .site-footer__email:hover {
+    text-decoration: underline;
+  }
+
+  .site-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    justify-content: flex-end;
+  }
+
+  .site-footer__nav a {
+    color: #c7ccd1;
+    text-decoration: none;
+  }
+
+  .site-footer__nav a:hover {
+    color: var(--color-base);
+  }
+
+  .site-footer__fine {
+    margin: 2rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: #6b7480;
+  }
+
+  @media (max-width: 760px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .site-footer__nav {
+      justify-content: flex-start;
+    }
+  }
+</style>

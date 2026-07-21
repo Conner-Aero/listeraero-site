@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DimLine from '../components/DimLine.astro';
+import PortfolioCard from '../components/PortfolioCard.astro';
+import { portfolio } from '../data/portfolio.js';
+---
+
+<Layout
+  title="Portfolio"
+  description="A sample of work across analysis, design, tooling, and manufacturing. Details generalized where projects are proprietary."
+>
+  <section class="port-intro">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="port-intro__headline">A sample of work across analysis, design, tooling, and manufacturing.</h1>
+      <p class="port-intro__sub">Details generalized where projects are proprietary.</p>
+    </div>
+  </section>
+
+  <section class="port-grid-section">
+    <div class="wrap">
+      <DimLine label="Selected Work" />
+      <div class="port-grid">
+        {portfolio.map((item, i) => (
+          <PortfolioCard
+            title={item.title}
+            tags={item.tags}
+            description={item.description}
+            patternId={`portfolio-${i}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-band__row">
+      <h2 class="cta-band__headline">Have a part, a project, or a certification problem?<br />Let's talk.</h2>
+      <a href="/contact" class="btn btn-solid">Request a Quote</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .port-intro {
+    padding-bottom: 1rem;
+  }
+
+  .port-intro__headline {
+    font-size: clamp(2rem, 4.4vw, 3rem);
+    max-width: 24ch;
+    margin-top: 0.9rem;
+  }
+
+  .port-intro__sub {
+    color: var(--color-structure);
+    max-width: 50ch;
+    font-size: 1.05rem;
+  }
+
+  .port-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cta-band {
+    background: var(--color-ink);
+    color: var(--color-base);
+  }
+
+  .cta-band__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-band__headline {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--color-base);
+    max-width: 30ch;
+  }
+
+  @media (max-width: 700px) {
+    .port-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-band__row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

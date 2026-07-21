@@ -1,0 +1,60 @@
+---
+// The hero's signature artwork: an airfoil rib rendered as a dimensioned
+// engineering drawing — chord line, dimension line, and a section-cut
+// marker (A—A), the drafting conventions the whole site's motif is built from.
+---
+
+<svg class="hero-drawing" viewBox="0 0 600 320" role="img" aria-label="Dimensioned technical drawing of an airfoil rib section">
+  <!-- section cut line A—A -->
+  <line x1="230" y1="20" x2="230" y2="300" stroke="var(--color-titanium)" stroke-width="1" stroke-dasharray="10 5 2 5" />
+  <circle cx="230" cy="24" r="12" fill="var(--color-base)" stroke="var(--color-structure)" stroke-width="1.25" />
+  <text x="230" y="28" text-anchor="middle" class="hero-drawing__label-mono">A</text>
+  <circle cx="230" cy="296" r="12" fill="var(--color-base)" stroke="var(--color-structure)" stroke-width="1.25" />
+  <text x="230" y="300" text-anchor="middle" class="hero-drawing__label-mono">A</text>
+
+  <!-- airfoil rib outline -->
+  <path
+    d="M50,175 C150,90 340,70 560,150 C420,205 220,222 50,175 Z"
+    fill="var(--color-base-raised)"
+    stroke="var(--color-ink)"
+    stroke-width="2"
+  />
+
+  <!-- chord centerline -->
+  <line x1="50" y1="176" x2="560" y2="150" stroke="var(--color-structure)" stroke-width="1" stroke-dasharray="8 6" />
+
+  <!-- lightening hole, a real rib detail -->
+  <ellipse cx="330" cy="150" rx="46" ry="30" fill="none" stroke="var(--color-structure)" stroke-width="1.25" />
+
+  <!-- dimension line: overall chord length -->
+  <g class="hero-drawing__dim">
+    <line x1="50" y1="255" x2="560" y2="255" stroke="var(--color-titanium)" stroke-width="1" />
+    <line x1="50" y1="240" x2="50" y2="270" stroke="var(--color-titanium)" stroke-width="1" />
+    <line x1="560" y1="240" x2="560" y2="270" stroke="var(--color-titanium)" stroke-width="1" />
+    <path d="M50,255 L66,250 L66,260 Z" fill="var(--color-titanium)" />
+    <path d="M560,255 L544,250 L544,260 Z" fill="var(--color-titanium)" />
+    <text x="305" y="248" text-anchor="middle" class="hero-drawing__label-mono">21.400</text>
+  </g>
+
+  <text x="60" y="298" class="hero-drawing__label-mono hero-drawing__label-mono--muted">SCALE 1:4</text>
+</svg>
+
+<style>
+  .hero-drawing {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .hero-drawing__label-mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    fill: var(--color-structure);
+    dominant-baseline: middle;
+  }
+
+  .hero-drawing__label-mono--muted {
+    fill: var(--color-titanium);
+    letter-spacing: 0.08em;
+  }
+</style>
