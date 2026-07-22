@@ -10,8 +10,15 @@ directory = "./dist"
 [observability]
 enabled = true
 
-# Non-secret values only — RESEND_API_KEY is bound separately via the
-# Cloudflare dashboard's Secrets Store, not committed here.
+# Non-secret values.
 [vars]
 CONTACT_TO_EMAIL = "conner@listeraero.com"
 CONTACT_FROM_EMAIL = "Lister Aerospace Website <notify@mail.listeraero.com>"
+
+# The secret itself lives in the Secrets Store (account-level), not here —
+# this just declares the binding so `wrangler deploy` doesn't drop it on
+# the next redeploy (config-file bindings are the source of truth).
+[[secrets_store_secrets]]
+binding = "RESEND_API_KEY"
+store_id = "76dccc1904b5424794209c8fb2006713"
+secret_name = "RESEND-API-KEY"
