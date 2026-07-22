@@ -9,3 +9,9 @@ directory = "./dist"
 
 [observability]
 enabled = true
+
+# Non-secret values only — RESEND_API_KEY is bound separately via the
+# Cloudflare dashboard's Secrets Store, not committed here.
+[vars]
+CONTACT_TO_EMAIL = "conner@listeraero.com"
+CONTACT_FROM_EMAIL = "Lister Aerospace Website <notify@mail.listeraero.com>"
