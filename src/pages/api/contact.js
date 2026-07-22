@@ -1,19 +1,23 @@
-// Cloudflare Pages Function — handles POSTs from the /contact form and
-// relays them through Resend to conner@listeraero.com. Fully owned: no
+// Astro API route (server-rendered) — handles POSTs from the /contact form
+// and relays them through Resend to conner@listeraero.com. Fully owned: no
 // third party sees submissions except Resend, which just relays the email.
 //
-// Required environment variables (set in the Cloudflare Pages dashboard,
-// or in .dev.vars for local `wrangler pages dev` testing):
+// Required environment variables (set in the Cloudflare dashboard for this
+// Worker, or in .dev.vars for local `wrangler dev` testing):
 //   RESEND_API_KEY    — secret, from resend.com
 //   CONTACT_TO_EMAIL  — optional, defaults to conner@listeraero.com
 //   CONTACT_FROM_EMAIL — optional, defaults to Resend's shared test sender;
 //                        set this to an address on a domain verified in
-//                        Resend (e.g. "Lister Aerospace <noreply@listeraero.com>")
+//                        Resend (e.g. "Lister Aerospace <notify@mail.listeraero.com>")
 //                        once that domain is verified.
+
+import { env } from 'cloudflare:workers';
+
+export const prerender = false;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export async function onRequestPost({ request, env }) {
+export async function POST({ request }) {
   let form;
   try {
     form = await request.formData();

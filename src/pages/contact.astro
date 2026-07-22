@@ -1,10 +1,12 @@
 ---
+export const prerender = true;
+
 import Layout from '../layouts/Layout.astro';
 import DimLine from '../components/DimLine.astro';
 
-// Handled by a Cloudflare Pages Function at functions/api/contact.js, which
-// relays submissions through Resend to conner@listeraero.com. See that file
-// for the required environment variables.
+// Handled by the server-rendered API route at src/pages/api/contact.ts,
+// which relays submissions through Resend to conner@listeraero.com. See
+// that file for the required environment variables.
 const formAction = '/api/contact';
 
 const projectTypes = [
