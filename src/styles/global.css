@@ -14,9 +14,11 @@
   --color-base-raised: #fbfaf8;
   --color-ink: #16181c;
   --color-structure: #3c4a57;
-  --color-titanium: #6e7b87;
+  --color-titanium: #5f6b76;
   --color-accent: #c8552b;
   --color-accent-ink: #a8431f;
+  --color-accent-hover: #8a3618;
+  --color-accent-on-dark: #d06f47;
   --color-hairline: rgba(60, 74, 87, 0.22);
   --color-hairline-strong: rgba(22, 24, 28, 0.4);
 
@@ -95,7 +97,7 @@ section {
 
 /* Visible keyboard focus everywhere */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 3px;
 }
 
@@ -110,26 +112,26 @@ section {
   text-transform: uppercase;
   text-decoration: none;
   padding: 0.85rem 1.5rem;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-accent-ink);
   border-radius: var(--radius);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   background: transparent;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .btn:hover {
-  background: var(--color-accent);
+  background: var(--color-accent-ink);
   color: var(--color-base-raised);
 }
 
 .btn-solid {
-  background: var(--color-accent);
+  background: var(--color-accent-ink);
   color: var(--color-base-raised);
 }
 
 .btn-solid:hover {
-  background: var(--color-accent-ink);
-  border-color: var(--color-accent-ink);
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .btn-ghost {

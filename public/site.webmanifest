@@ -1,0 +1,16 @@
+{
+  "name": "Lister Aerospace Technologies LLC",
+  "short_name": "Lister Aerospace",
+  "description": "Independent aerospace engineering: structural analysis, FAA certification support, and design-through-manufacturing.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f5f4f1",
+  "theme_color": "#f5f4f1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

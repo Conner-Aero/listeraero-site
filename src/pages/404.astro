@@ -1,0 +1,55 @@
+---
+export const prerender = true;
+
+import Layout from '../layouts/Layout.astro';
+import DimLine from '../components/DimLine.astro';
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist."
+>
+  <section class="not-found">
+    <div class="wrap">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="not-found__headline">Off the print.</h1>
+      <p class="not-found__text">
+        This page doesn't exist, or the link is out of date. Check the address, or use one of
+        the pages below.
+      </p>
+      <DimLine label="Try instead" />
+      <div class="not-found__links">
+        <a href="/" class="btn btn-ghost">Home</a>
+        <a href="/capabilities" class="btn btn-ghost">Capabilities</a>
+        <a href="/portfolio" class="btn btn-ghost">Portfolio</a>
+        <a href="/contact" class="btn btn-solid">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    padding-block: clamp(4rem, 12vw, 8rem);
+    min-height: 50vh;
+  }
+
+  .not-found__headline {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-block: 0.9rem 1.1rem;
+  }
+
+  .not-found__text {
+    max-width: 50ch;
+    color: var(--color-structure);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .not-found__links {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
