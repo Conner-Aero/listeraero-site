@@ -62,6 +62,8 @@ export async function POST({ request }) {
     message,
   ].filter((line) => line !== false && line !== '');
 
+  console.error('DEBUG: has RESEND_API_KEY?', Boolean(env.RESEND_API_KEY), 'toEmail:', toEmail, 'fromEmail:', fromEmail);
+
   let resendResponse;
   try {
     resendResponse = await fetch('https://api.resend.com/emails', {
@@ -78,11 +80,13 @@ export async function POST({ request }) {
         text: bodyLines.join('\n'),
       }),
     });
-  } catch {
+  } catch (err) {
+    console.error('DEBUG: fetch to Resend threw:', err && err.message);
     return jsonResponse({ ok: false, error: 'Could not reach the mail service.' }, 502);
   }
 
   if (!resendResponse.ok) {
+    console.error('DEBUG: Resend rejected:', resendResponse.status, await resendResponse.text());
     return jsonResponse({ ok: false, error: 'Delivery failed on our end.' }, 502);
   }
 
