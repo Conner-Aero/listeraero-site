@@ -49,6 +49,20 @@ const pageTitle = `${title} · Lister Aerospace`;
     </main>
     <Footer />
     <script>
+      // Assembled at runtime so the address never appears as plain,
+      // contiguous text in the page source — keeps it off basic
+      // regex-based email harvesters while working normally for visitors.
+      const user = 'conner';
+      const domain = ['lister', 'aero', '.com'].join('');
+      const email = `${user}@${domain}`;
+      document.querySelectorAll('[data-email-link]').forEach((el) => {
+        el.setAttribute('href', `mailto:${email}`);
+        if (!el.textContent || el.textContent === 'Email') el.textContent = email;
+      });
+      document.querySelectorAll('[data-email-text]').forEach((el) => {
+        el.textContent = email;
+      });
+
       const items = document.querySelectorAll('.reveal');
       if (
         'IntersectionObserver' in window &&

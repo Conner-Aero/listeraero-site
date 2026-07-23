@@ -82,7 +82,7 @@ const projectTypes = [
         <div class="quote-form__actions">
           <button type="submit" class="btn btn-solid">Send request</button>
           <p class="quote-form__fallback">
-            Prefer email? Write to <a href="mailto:conner@listeraero.com">conner@listeraero.com</a>.
+            Prefer email? Write to <a data-email-link href="#">Email</a>.
           </p>
         </div>
 
@@ -212,6 +212,7 @@ const projectTypes = [
 <script>
   const form = document.getElementById('quote-form') as HTMLFormElement | null;
   const status = form?.querySelector('.quote-form__status') as HTMLElement | null;
+  const contactEmail = ['conner', ['lister', 'aero', '.com'].join('')].join('@');
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -245,12 +246,12 @@ const projectTypes = [
           : null;
         status.dataset.state = 'error';
         status.textContent = detail
-          ? `Couldn't send that: ${detail}. Fix that and try again, or email conner@listeraero.com directly.`
-          : "Couldn't send that. Something's wrong on this end. Email conner@listeraero.com directly instead.";
+          ? `Couldn't send that: ${detail}. Fix that and try again, or email ${contactEmail} directly.`
+          : `Couldn't send that. Something's wrong on this end. Email ${contactEmail} directly instead.`;
       }
     } catch {
       status.dataset.state = 'error';
-      status.textContent = "Couldn't reach the server. Email conner@listeraero.com directly instead.";
+      status.textContent = `Couldn't reach the server. Email ${contactEmail} directly instead.`;
     } finally {
       submitButton?.removeAttribute('disabled');
     }
