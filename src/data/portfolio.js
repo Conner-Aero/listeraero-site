@@ -27,6 +27,15 @@ export const portfolio = [
     imageAlt: 'Representative die-set assembly illustrating punch, die, and part-locating features.',
   },
   {
+    slug: 'aerodynamic-fairing-design',
+    title: 'Aerodynamic Fairing Design',
+    tags: ['Design', 'Surfacing'],
+    description:
+      'Modeled the exterior surface of an aerodynamic speed fairing for a landing-gear leg, shaping a smooth, low-drag form and integrating it with the surrounding airframe structure.',
+    image: '/images/portfolio/speed-fairing.webp',
+    imageAlt: 'Aerodynamic speed fairing modeled on a landing-gear leg, shown installed within the surrounding airframe.',
+  },
+  {
     slug: 'tailwheel-redesign-faa-drop-test',
     title: 'Tailwheel Redesign & FAA Drop Test Validation',
     tags: ['Certification', 'Test'],
