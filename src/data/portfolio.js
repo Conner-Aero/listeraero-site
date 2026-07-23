@@ -36,6 +36,33 @@ export const portfolio = [
     imageAlt: 'Aerodynamic speed fairing modeled on a landing-gear leg, shown installed within the surrounding airframe.',
   },
   {
+    slug: 'throttle-quadrant-cover-design',
+    title: 'Throttle Quadrant Cover Design',
+    tags: ['Design', 'Surfacing'],
+    description:
+      'Designed the cosmetic cover housing for a throttle control quadrant, shaping an ergonomic, low-profile surface around the control-lever slots.',
+    image: '/images/portfolio/throttle-quadrant.webp',
+    imageAlt: 'Throttle quadrant cover housing, showing the control-lever slot geometry.',
+  },
+  {
+    slug: 'flap-quadrant-cover-design',
+    title: 'Flap Quadrant Cover Design',
+    tags: ['Design', 'Surfacing'],
+    description:
+      'Designed the cosmetic cover housing for a flap control quadrant, shaping a smooth exterior surface around the lever slot and mounting interface.',
+    image: '/images/portfolio/flap-quadrant.webp',
+    imageAlt: 'Flap quadrant cover housing, showing the control-lever slot geometry.',
+  },
+  {
+    slug: 'engine-mount-ring-tube-coping',
+    title: 'Engine Mount Ring & Tube Coping',
+    tags: ['Design', 'Manufacturing'],
+    description:
+      'Modeled a welded engine mount ring with multiple coped tube intersections, defining joint geometry to support fixturing and weld fit-up.',
+    image: '/images/portfolio/engine-mount-cope.webp',
+    imageAlt: 'Welded engine mount ring showing coped tube intersections at each joint.',
+  },
+  {
     slug: 'tailwheel-redesign-faa-drop-test',
     title: 'Tailwheel Redesign & FAA Drop Test Validation',
     tags: ['Certification', 'Test'],
