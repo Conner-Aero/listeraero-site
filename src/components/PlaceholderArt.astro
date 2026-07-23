@@ -1,13 +1,15 @@
 ---
-// Placeholder for portfolio imagery Conner has not supplied yet.
-// Rendered as section-hatching (a real drafting convention for "material here")
-// rather than a broken-image icon, so it reads as intentional until real photos land.
+// Stand-in for portfolio imagery: either not supplied yet, or intentionally
+// omitted (proprietary/third-party work). Rendered as section-hatching (a
+// real drafting convention for "material here") rather than a broken-image
+// icon, so it reads as deliberate either way.
 interface Props {
   label: string;
   patternId: string;
+  tag?: string;
   class?: string;
 }
-const { label, patternId, class: className } = Astro.props;
+const { label, patternId, tag = 'Image to supply', class: className } = Astro.props;
 ---
 
 <div class:list={['placeholder-art', className]}>
@@ -23,7 +25,7 @@ const { label, patternId, class: className } = Astro.props;
     <line x1="0" y1="0" x2="400" y2="300" stroke="var(--color-hairline-strong)" stroke-width="1" />
     <line x1="400" y1="0" x2="0" y2="300" stroke="var(--color-hairline-strong)" stroke-width="1" />
   </svg>
-  <span class="placeholder-art__tag">Image to supply</span>
+  <span class="placeholder-art__tag">{tag}</span>
 </div>
 
 <style>

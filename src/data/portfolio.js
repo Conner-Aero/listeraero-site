@@ -1,30 +1,45 @@
 export const portfolio = [
   {
-    slug: 'landing-gear-reconfiguration',
-    title: 'Landing-gear structural reconfiguration',
+    slug: 'engine-baffle-manufacturing-automation',
+    title: 'Engine Baffle Manufacturing Automation',
+    tags: ['Design', 'Manufacturing'],
+    description:
+      'Modernized legacy, paper-driven engine baffle production into a semi-automated CNC workflow, replacing manual cutting with controlled digital manufacturing data to improve repeatability and throughput.',
+    image: '/images/portfolio/engine-baffle.webp',
+    imageAlt: 'Representative de-featured model illustrating sheet-metal baffle geometry and manufacturing complexity.',
+  },
+  {
+    slug: 'nose-gear-conversion-airframe-reconfiguration',
+    title: 'Nose Gear Conversion & Airframe Reconfiguration',
     tags: ['Design', 'Analysis', 'Certification'],
     description:
-      'Redesigned and substantiated a landing-gear structure at a Part 23 certified OEM.',
+      'Led the airframe and landing-gear reconfiguration from a tailwheel platform to a nose-gear variant, covering structural integration, prototype development, and validation planning through drop testing.',
+    image: '/images/portfolio/nose-gear-airframe.webp',
+    imageAlt: 'Abstracted airframe configuration illustrating nose-gear integration and landing-gear layout.',
   },
   {
-    slug: 'faa-witnessed-drop-testing',
-    title: 'FAA-witnessed drop testing',
-    tags: ['Certification', 'Test'],
-    description:
-      'Prepared and supported structural drop testing witnessed by the FAA.',
-  },
-  {
-    slug: 'production-tooling-cnc-tube',
-    title: 'Production tooling & CNC tube fabrication',
+    slug: 'production-tooling-cnc-tube-fabrication',
+    title: 'Production Tooling & CNC Tube Fabrication',
     tags: ['Tooling', 'Manufacturing'],
     description:
-      'Designed production tooling and fabricated tube structures in-house.',
+      'Designed production bending dies for formed sheet-metal brackets and gussets, and built a digital tube-fabrication workflow on a CNC tube bender that replaced manual layout and hand-fitting.',
+    image: '/images/portfolio/production-tooling-die.webp',
+    imageAlt: 'Representative die-set assembly illustrating punch, die, and part-locating features.',
   },
   {
-    slug: 'forming-wiping-dies-gussets',
-    title: 'Forming/wiping dies for sheet-metal gussets',
-    tags: ['Tooling', 'DFM'],
+    slug: 'tailwheel-redesign-faa-drop-test',
+    title: 'Tailwheel Redesign & FAA Drop Test Validation',
+    tags: ['Certification', 'Test'],
     description:
-      'Designed wiping dies for repeatable sheet-metal gusset forming.',
+      'Led integration and validation of a redesigned tailwheel system through FAA-observed drop testing, working directly with an FAA representative to separate transient test noise from true structural response.',
+    image: null,
+  },
+  {
+    slug: 'legacy-engineering-data-modernization',
+    title: 'Legacy Engineering Data Modernization',
+    tags: ['Design', 'Process'],
+    description:
+      'Converted a paper-based drawing and configuration-control system into a structured digital dataset, cutting drawing-list update time from days to minutes and strengthening traceability.',
+    image: null,
   },
 ];
